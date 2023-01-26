@@ -1,0 +1,60 @@
+.body {
+  display: flex;
+  flex-wrap: wrap;
+  height: 80vh;
+
+  .wrapper {
+    margin: auto;
+
+    .goHomeButton {
+      color: #23366f;
+      font-family: monospace;
+      font-weight: bold;
+      padding: 10px 25px;
+      border: solid #fff 1px;
+      background-color: #fff;
+      border-radius: 50px;
+    }
+  }
+
+  .title {
+    font-family: monospace;
+    font-style: normal;
+    font-size: 30px;
+    color: #fff;
+    padding: 20px;
+  }
+  .description {
+    font-family: monospace;
+    font-style: normal;
+    font-size: 20px;
+    color: #fff;
+    padding: 0 20px;
+    span {
+      color: orangered;
+    }
+  }
+  .goHomeButtonWrapper {
+    padding: 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .left,
+  .right {
+    height: 100%;
+    flex: 0 0 50%;
+  }
+
+  .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .right {
+  }
+}

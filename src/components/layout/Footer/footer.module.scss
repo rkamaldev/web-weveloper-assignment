@@ -1,0 +1,35 @@
+.footerComponent {
+  background-color: #dae2f4;
+  width: 100%;
+  padding: 10px;
+  min-height: 60px;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: stretch;
+
+  div {
+    min-height: 40px;
+    height: 40px;
+    padding: 10px 10px;
+    border-right: solid 1px #ccc;
+    font-family: monospace;
+
+    .link {
+      color: #23366f;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .link:hover {
+      color: #5495cf;
+    }
+
+    .text {
+    }
+  }
+
+  div:last-child {
+    border-right: none;
+  }
+}
