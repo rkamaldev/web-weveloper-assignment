@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#Error Should render error component with support email id 1`] = `
+<div
+  className="body"
+>
+  <div
+    className="left"
+  >
+    <div
+      className="wrapper"
+    >
+      <div
+        className="title"
+      >
+        Oops, looks like something went wrong!!!
+      </div>
+      <div
+        className="description"
+      >
+        Please try again later or contact 
+        <span>
+          test@test.com
+        </span>
+      </div>
+      <div
+        className="goHomeButtonWrapper"
+      >
+        <button
+          className="goHomeButton"
+          onClick={[Function]}
+        >
+          Back to Home
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="right"
+  >
+    <img
+      alt="me"
+      src="/error-page.png"
+      width="80%"
+    />
+  </div>
+</div>
+`;
+
+exports[`Should render error component with support email id 1`] = `
+<div
+  className="body"
+>
+  <div
+    className="left"
+  >
+    <div
+      className="wrapper"
+    >
+      <div
+        className="title"
+      >
+        Oops, looks like something went wrong!!!
+      </div>
+      <div
+        className="description"
+      >
+        Please try again later or contact 
+        <span>
+          test@test.com
+        </span>
+      </div>
+      <div
+        className="goHomeButtonWrapper"
+      >
+        <button
+          className="goHomeButton"
+          onClick={[Function]}
+        >
+          Back to Home
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="right"
+  >
+    <img
+      alt="me"
+      src="/error-page.png"
+      width="80%"
+    />
+  </div>
+</div>
+`;

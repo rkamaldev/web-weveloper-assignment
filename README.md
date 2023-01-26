@@ -13,6 +13,11 @@ Build
 npm run build
 ```
 
+Test
+```bash
+npm run test
+```
+
 Lint
 ```bash
 npm run lint

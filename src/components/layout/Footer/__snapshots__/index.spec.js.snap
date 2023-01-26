@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#Footer Should render Footer component with given config 1`] = `
+<div
+  className="footerComponent"
+>
+  <div>
+    <a
+      className="link"
+      href="https://www.zurich.com/contact-us"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onTouchStart={[Function]}
+      target=""
+    >
+      Contact us
+    </a>
+  </div>
+  <div>
+    <a
+      className="link"
+      href="https://www.zurich.com/services/privacy"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onTouchStart={[Function]}
+      target="_blank"
+    >
+      Privacy
+    </a>
+  </div>
+  <div>
+    <span
+      className="text"
+    >
+      © 2023 Rights Reserved
+    </span>
+  </div>
+</div>
+`;
+
+exports[`#Footer Should render Footer component without config 1`] = `
+<div
+  className="footerComponent"
+/>
+`;
+
+exports[`Should render Footer component with given config 1`] = `
+<div
+  className="footerComponent"
+>
+  <div>
+    <a
+      className="link"
+      href="https://www.zurich.com/contact-us"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onTouchStart={[Function]}
+      target=""
+    >
+      Contact us
+    </a>
+  </div>
+  <div>
+    <a
+      className="link"
+      href="https://www.zurich.com/services/privacy"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onTouchStart={[Function]}
+      target="_blank"
+    >
+      Privacy
+    </a>
+  </div>
+  <div>
+    <span
+      className="text"
+    >
+      © 2023 Rights Reserved
+    </span>
+  </div>
+</div>
+`;
