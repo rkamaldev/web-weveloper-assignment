@@ -14,17 +14,17 @@ npm run build
 ```
 
 Lint
-``bash
+```bash
 npm run lint
 ```
 
 Format code
-``bash
+```bash
 format:fix
 ```
 
 Deploy to AWS Lightsail
-``bash
+```bash
 1. docker build -t <<image_name>> .
 2. docker run -it --rm -p 3000:3000 zurich
 3. aws lightsail push-container-image --region <<region>> --service-name <<lightsail container name>> --label <<any label>> --image <<image_name>>
