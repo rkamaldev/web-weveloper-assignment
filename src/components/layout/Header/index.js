@@ -3,15 +3,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import { googleLogout } from '@react-oauth/google';
 import { useRouter } from 'next/router';
 
-import { getSessionUserData, setSessionUserData, setGoogleAuthData } from '@/features/login/loginSlice';
-import { setUserMetaData, setUserData } from '@/features/user/userSlice';
+import { AppDispatch } from '@/store/store';
+import { getGoogleAuthData, setGoogleAuthData, clearSession } from '@/features/login/loginSlice';
+import { getUserData, setUserData } from '@/features/user/userSlice';
 
 import styles from './header.module.scss';
 
 function Header() {
-  const sessionUserData = useSelector(getSessionUserData);
+  const authData = useSelector(getGoogleAuthData);
   const router = useRouter();
   const dispatch = useDispatch();
+  const userData = useSelector(getUserData);
 
   return (
     <div className={styles.headerComponent}>
@@ -27,8 +29,7 @@ function Header() {
           viewBox="2.3 -3 128.8 33.4"
           enableBackground="new 2.3 -3 128.8 33.4"
           xmlSpace="preserve"
-          className="headerLogo"
-        >
+          className="headerLogo">
           <g>
             <path
               id="logoSymbol"
@@ -39,8 +40,7 @@ function Header() {
                 c0.8-0.1,1.1-0.1,1.8-0.1c0.5,0,1.3,0,2.3,0.1l2.2,0.1c0.8,0,1.5,0.1,2,0.1c1.1,0,1.9-0.1,2.6-0.3c0.6-0.2,1.1-0.4,1.6-0.8
                 c0.9-0.6,1.7-1.6,2.2-2.5c0-0.1,0.1-0.2,0.2-0.4l0.7,0.2c-0.2,0.8-0.3,1.1-0.7,1.9c-0.7,1.5-1.4,2.5-2.5,3.3
                 c-1.1,0.8-2.2,1.2-3.6,1.2l-0.2,0c-1,0-1.8-0.1-4.3-0.5c-2.5-0.4-3.8-0.5-5.1-0.5c-0.8,0-1.6,0.1-2.4,0.2c-1.1,0.2-1.5,0.3-2.5,0.7
-                c2.7,3,6.7,4.9,11.1,4.9c8.3,0,15-6.7,15-15C34.5,5.4,27.8-1.3,19.5-1.3"
-            ></path>
+                c2.7,3,6.7,4.9,11.1,4.9c8.3,0,15-6.7,15-15C34.5,5.4,27.8-1.3,19.5-1.3"></path>
             <path
               id="logoText"
               className="logoText"
@@ -73,29 +73,32 @@ function Header() {
                 C61.9,6.6,62,6.8,62.2,7c0.1,0.2,0.2,0.3,0.2,0.5c0.1,0.2,0.1,0.4,0.1,0.7c0,0.1,0,0.4,0,0.9l0,0.8v4.2c0,1.6,0,1.9,0.1,2.6
                 c0.1,1.1,0.4,1.9,1,2.7c1.1,1.4,2.9,2.1,5.2,2.1c1.1,0,2.1-0.2,2.9-0.5c0.8-0.3,1.6-0.8,2.2-1.5c0.7-0.8,1.1-1.7,1.2-2.8
                 c0.1-0.7,0.1-1.5,0.1-2.6V9.9l0-0.8V8.9c0-0.6,0-1,0.1-1.3c0.1-0.2,0.1-0.4,0.3-0.6c0.2-0.2,0.3-0.4,0.6-0.6h-4.7
-                C71.7,6.6,71.8,6.7,71.9,7"
-            ></path>
+                C71.7,6.6,71.8,6.7,71.9,7"></path>
           </g>
         </svg>
       </div>
       <div className={styles.right}>
-        {sessionUserData && sessionUserData.name && (
+        {userData && userData.length > 0 ? (
+          <button
+            onClick={() => {
+              dispatch(setGoogleAuthData({}));
+              dispatch(setGoogleAuthData({}));
+              AppDispatch(clearSession());
+              dispatch(setUserData({}));
+              googleLogout();
+              router.push('/');
+            }}
+            className={styles.googleSignOutButton}>
+            Logout
+          </button>
+        ) : (
+          <></>
+        )}
+
+        {authData && authData.name && (
           <>
-            <button
-              onClick={() => {
-                googleLogout();
-                dispatch(setSessionUserData({}));
-                dispatch(setGoogleAuthData({}));
-                dispatch(setUserMetaData({}));
-                dispatch(setUserData({}));
-                router.push('/');
-              }}
-              className={styles.googleSignOutButton}
-            >
-              Logout
-            </button>
-            <span>{sessionUserData.name}</span>
-            <img src={sessionUserData.picture} alt="session-user-avatar" />
+            <span>{authData.name}</span>
+            <img src={authData.picture} alt="session-user-avatar" />
           </>
         )}
       </div>

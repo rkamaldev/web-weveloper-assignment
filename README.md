@@ -9,26 +9,31 @@ docker-compose up
 ```
 
 Build
+
 ```bash
 npm run build
 ```
 
 Test
+
 ```bash
 npm run test
 ```
 
 Lint
+
 ```bash
 npm run lint
 ```
 
 Format code
+
 ```bash
 format:fix
 ```
 
 Deploy to AWS Lightsail
+
 ```bash
 1. docker build -t <<image_name>> .
 2. docker run -it --rm -p 3000:3000 zurich
@@ -36,5 +41,6 @@ Deploy to AWS Lightsail
 ```
 
 Notes:
+
 1. `docker` should exist if you are using docker-compose to run the system
-2. make sure to have AWS sdk deployment : https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-pushing-container-images 
+2. make sure to have AWS sdk deployment : https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-pushing-container-images

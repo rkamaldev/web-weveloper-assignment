@@ -1,46 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Head from 'next/head';
-import getConfig from 'next/config';
-import { useSelector, useDispatch } from 'react-redux';
-import { useRouter } from 'next/router';
 
-import { getGoogleAuthData, setSessionUserData } from '@/features/login/loginSlice';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Body from '@/components/layout/Body';
 import User from '@/components/user';
-import Loader from '@/components/loader';
 
 import styles from '@/styles/Home.module.scss';
 
-export default function Home() {
-  const { publicRuntimeConfig } = getConfig();
-  const { GOOGLE_API } = publicRuntimeConfig;
-  const authData = useSelector(getGoogleAuthData);
-  const dispatch = useDispatch();
-  const router = useRouter();
-
-  const [loaderState, setLoaderState] = useState(true);
-  const [userStatus, setUserStatus] = useState(false);
-
-  useEffect(() => {
-    fetch(`${GOOGLE_API}/userinfo?alt=json&access_token=${authData.access_token}`)
-      .then(res => res.json())
-      .then(data => {
-        dispatch(setSessionUserData(data));
-        setLoaderState(false);
-        if (data.verified_email) {
-          setUserStatus(true);
-        } else {
-          router.push('/error');
-        }
-      })
-      .catch(() => {
-        setLoaderState(false);
-        router.push('/error');
-      });
-  }, []);
-
+function Home() {
   return (
     <>
       <Head>
@@ -50,9 +18,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Loader loader={loaderState} />
         <Header />
-        <Body>{userStatus && <User />}</Body>
+        <Body>
+          <User />
+        </Body>
         <Footer
           footerItems={[
             {
@@ -77,3 +46,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Home;

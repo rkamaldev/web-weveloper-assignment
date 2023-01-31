@@ -1,21 +1,22 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
-
 import { useGoogleLogin } from '@react-oauth/google';
-import { setGoogleAuthData } from '@/features/login/loginSlice';
+
+import { initiateSession } from '@/features/login/loginSlice';
+import { AppDispatch } from '@/store/store';
 
 import style from './loginSection.module.scss';
 
 function Login() {
-  const dispatch = useDispatch();
   const router = useRouter();
 
   const login = useGoogleLogin({
-    onSuccess: token => {
-      console.log(token);
-      dispatch(setGoogleAuthData(token));
+    onSuccess: async token => {
+      await AppDispatch(initiateSession(token));
       router.push('/home');
+    },
+    onError: () => {
+      router.push('/error');
     },
     flow: 'implicit',
   });
